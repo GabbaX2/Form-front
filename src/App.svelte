@@ -28,45 +28,40 @@
     ];
 
     const sendForm = async (event) => {
-        event.preventDefault();
+    event.preventDefault();
 
-        try {
-            const res = await fetch('https://form-server-qbwu.onrender.com/utente', {
-                method: 'POST',
-                headers: {
-                    "Content-type": "application/json"
-                },
-                body: JSON.stringify({nome, cognome, eta, presentazione, selectedCountry, selectedJob, remoteWork, selectedRadio})
-            });
+    try {
+        const res = await fetch('https://form-server-qbwu.onrender.com/utente', {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                nome,
+                cognome,
+                eta,
+                presentazione,
+                selectedCountry,
+                selectedJob,
+                selectedRadio,
+                remoteWork
+            })
+        });
 
-            if (res.ok) {
-                const data = await res.json();
-                console.log(data);
+        if (res.ok) {
+            const data = await res.json();
+            console.log(data);
 
-                responseMsg = data.message;
-                console.log(responseMsg);
-            } else {
-                responseMsg = "Ahia";
-                console.log(responseMsg);
-            }
-        } catch (e) {
-            console.log(e);
+            responseMsg = data.message;
+            console.log(responseMsg);
+        } else {
+            responseMsg = "Errore durante l'invio del form";
+            console.log(responseMsg);
         }
-
-        // console.log({
-        //     nome,
-        //     cognome,
-        //     eta,
-        //     presentazione,
-        //     selectedCountry,
-        //     selectedJob,
-        //     remoteWork,
-        //     selectedRadio
-        // });
-        //
-        // responseMsg = 'messaggio inviato con successo!';
-        // console.log(responseMsg);
-    };
+    } catch (e) {
+        console.log(e);
+    }
+};
 </script>
 
 <div class="min-h-screen p-8 bg-[url('https://wallpapers.com/images/featured/orange-aesthetic-8y1id0f5zglidozn.jpg')] bg-cover bg-center">

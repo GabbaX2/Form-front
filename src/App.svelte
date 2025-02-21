@@ -31,7 +31,7 @@
         event.preventDefault();
 
         try {
-            const res = await fetch('http://localhost:3080/utente', {
+            const res = await fetch('https://form-server-two.vercel.app/utente', {
                 method: 'POST',
                 headers: {
                     "Content-type": "application/json"
